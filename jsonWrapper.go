@@ -112,13 +112,16 @@ func (wrapper *JSONWrapper) CopyJSONObjectFromPath(path string) *JSONWrapper {
 
 // GetArrayFromPath Returns an array from the path passed as parameter
 func (wrapper *JSONWrapper) GetArrayFromPath(path string) []*JSONWrapper {
-	array := wrapper.ct.Path(path).Children()
+	array, err := wrapper.ct.Path(path).Children()
+		panic(err) // TODO: Add a proper handler
 	return createArrayWrapper(array)
 }
 
 // GetArray Returns an array from the current object
 func (wrapper *JSONWrapper) GetArray() []*JSONWrapper {
-	array := wrapper.ct.Children()
+	array, err := wrapper.ct.Children()
+		panic(err) // TODO: Add a proper handler
+
 	return createArrayWrapper(array)
 }
 
